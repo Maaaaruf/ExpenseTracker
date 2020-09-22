@@ -14,36 +14,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Autofac;
 using ExpenseTracker.Framework.Contexts;
-
-
-/*
-public IConfigurationRoot Configuration { get; private set; }
-
-        public static ILifetimeScope AutofacContainer { get; private set; }
-
-        public void ConfigureContainer(ContainerBuilder builder)
-        {
-            var connectionStringName = "DefaultConnection";
-            var connectionString = Configuration.GetConnectionString(connectionStringName);
-            var migrationAssemblyName = typeof(Startup).Assembly.FullName;
-
-            builder.RegisterModule(new FrameworkModule(connectionString, migrationAssemblyName));
-            builder.RegisterModule(new WebModule(connectionString, migrationAssemblyName));
-        }
-
-        // This method gets called by the runtime. Use this method to add services to the container.
-        public void ConfigureServices(IServiceCollection services)
-        {
-            
- 
- 
-*/
-
-
-
-
-
-
+using ExpenseTracker.Framework.Modules;
 
 namespace ExpenseTracker.Web
 {
