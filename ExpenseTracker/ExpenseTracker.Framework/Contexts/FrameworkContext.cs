@@ -7,8 +7,8 @@ namespace ExpenseTracker.Framework.Contexts
 {
     public class FrameworkContext : DbContext
     {
-        private string _connectionString;
-        private string _migrationAssemblyName;
+        private readonly string _connectionString;
+        private readonly string _migrationAssemblyName;
 
         public FrameworkContext(string connectionString, string migrationAssemblyName)
         {
