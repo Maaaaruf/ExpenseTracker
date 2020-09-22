@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using ExpenseTracker.Framework.Entities;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -32,8 +33,6 @@ namespace ExpenseTracker.Framework.Contexts
             base.OnModelCreating(builder);
         }
 
-
-
-
+        public DbSet<PaymentMethod> PaymentMethods { get; set; }
     }
 }
