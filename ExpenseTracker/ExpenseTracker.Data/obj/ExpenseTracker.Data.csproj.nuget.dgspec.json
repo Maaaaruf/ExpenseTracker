@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\ExpenseTracker\\ExpenseTracker\\ExpenseTracker.Web\\ExpenseTracker.Web.csproj": {}
+    "C:\\ExpenseTracker\\ExpenseTracker\\ExpenseTracker.Data\\ExpenseTracker.Data.csproj": {}
   },
   "projects": {
-    "C:\\ExpenseTracker\\ExpenseTracker\\ExpenseTracker.Web\\ExpenseTracker.Web.csproj": {
+    "C:\\ExpenseTracker\\ExpenseTracker\\ExpenseTracker.Data\\ExpenseTracker.Data.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\ExpenseTracker\\ExpenseTracker\\ExpenseTracker.Web\\ExpenseTracker.Web.csproj",
-        "projectName": "ExpenseTracker.Web",
-        "projectPath": "C:\\ExpenseTracker\\ExpenseTracker\\ExpenseTracker.Web\\ExpenseTracker.Web.csproj",
+        "projectUniqueName": "C:\\ExpenseTracker\\ExpenseTracker\\ExpenseTracker.Data\\ExpenseTracker.Data.csproj",
+        "projectName": "ExpenseTracker.Data",
+        "projectPath": "C:\\ExpenseTracker\\ExpenseTracker\\ExpenseTracker.Data\\ExpenseTracker.Data.csproj",
         "packagesPath": "C:\\Users\\Maruf\\.nuget\\packages\\",
-        "outputPath": "C:\\ExpenseTracker\\ExpenseTracker\\ExpenseTracker.Web\\obj\\",
+        "outputPath": "C:\\ExpenseTracker\\ExpenseTracker\\ExpenseTracker.Data\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Maruf\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -37,28 +37,6 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
-          "dependencies": {
-            "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore": {
-              "target": "Package",
-              "version": "[3.1.7, )"
-            },
-            "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
-              "target": "Package",
-              "version": "[3.1.7, )"
-            },
-            "Microsoft.AspNetCore.Identity.UI": {
-              "target": "Package",
-              "version": "[3.1.7, )"
-            },
-            "Microsoft.EntityFrameworkCore.SqlServer": {
-              "target": "Package",
-              "version": "[3.1.7, )"
-            },
-            "Microsoft.EntityFrameworkCore.Tools": {
-              "target": "Package",
-              "version": "[3.1.7, )"
-            }
-          },
           "imports": [
             "net461",
             "net462",
@@ -70,9 +48,6 @@
           "assetTargetFallback": true,
           "warn": true,
           "frameworkReferences": {
-            "Microsoft.AspNetCore.App": {
-              "privateAssets": "none"
-            },
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
