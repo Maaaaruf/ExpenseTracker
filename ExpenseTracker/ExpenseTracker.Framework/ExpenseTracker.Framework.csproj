@@ -6,11 +6,13 @@
 
   <ItemGroup>
     <Folder Include="Entities\" />
-    <Folder Include="Contexts\" />
-    <Folder Include="Modules\" />
     <Folder Include="Repositories\" />
     <Folder Include="UnitOfWorks\" />
     <Folder Include="Services\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Autofac.Extensions.DependencyInjection" Version="6.0.0" />
   </ItemGroup>
 
   <ItemGroup>
