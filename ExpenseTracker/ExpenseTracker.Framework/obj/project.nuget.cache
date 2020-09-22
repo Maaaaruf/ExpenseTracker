@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "Y3o1c9KPOqfZx1kbCt3J+fR5QRI1q1qGYtofEG4+flmm2kqUTuLUFkP7abKGb9FCji/IiAGUPakSV+rgcqCcIg==",
+  "success": true,
+  "projectFilePath": "C:\\ExpenseTracker\\ExpenseTracker\\ExpenseTracker.Framework\\ExpenseTracker.Framework.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Maruf\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
+    "C:\\Users\\Maruf\\.nuget\\packages\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512"
+  ],
+  "logs": []
+}
