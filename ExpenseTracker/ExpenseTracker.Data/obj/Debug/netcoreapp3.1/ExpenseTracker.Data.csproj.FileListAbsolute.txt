@@ -1,0 +1,9 @@
+C:\ExpenseTracker\ExpenseTracker\ExpenseTracker.Data\bin\Debug\netcoreapp3.1\ExpenseTracker.Data.deps.json
+C:\ExpenseTracker\ExpenseTracker\ExpenseTracker.Data\bin\Debug\netcoreapp3.1\ExpenseTracker.Data.dll
+C:\ExpenseTracker\ExpenseTracker\ExpenseTracker.Data\obj\Debug\netcoreapp3.1\ExpenseTracker.Data.csprojAssemblyReference.cache
+C:\ExpenseTracker\ExpenseTracker\ExpenseTracker.Data\obj\Debug\netcoreapp3.1\ExpenseTracker.Data.AssemblyInfoInputs.cache
+C:\ExpenseTracker\ExpenseTracker\ExpenseTracker.Data\obj\Debug\netcoreapp3.1\ExpenseTracker.Data.AssemblyInfo.cs
+C:\ExpenseTracker\ExpenseTracker\ExpenseTracker.Data\bin\Debug\netcoreapp3.1\ExpenseTracker.Data.pdb
+C:\ExpenseTracker\ExpenseTracker\ExpenseTracker.Data\obj\Debug\netcoreapp3.1\ExpenseTracker.Data.csproj.CoreCompileInputs.cache
+C:\ExpenseTracker\ExpenseTracker\ExpenseTracker.Data\obj\Debug\netcoreapp3.1\ExpenseTracker.Data.dll
+C:\ExpenseTracker\ExpenseTracker\ExpenseTracker.Data\obj\Debug\netcoreapp3.1\ExpenseTracker.Data.pdb
