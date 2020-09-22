@@ -1,0 +1,4 @@
+C:\ExpenseTracker\ExpenseTracker\ExpenseTracker.Data\obj\Debug\netstandard2.0\ExpenseTracker.Data.csprojAssemblyReference.cache
+C:\ExpenseTracker\ExpenseTracker\ExpenseTracker.Data\obj\Debug\netstandard2.0\ExpenseTracker.Data.AssemblyInfoInputs.cache
+C:\ExpenseTracker\ExpenseTracker\ExpenseTracker.Data\obj\Debug\netstandard2.0\ExpenseTracker.Data.AssemblyInfo.cs
+C:\ExpenseTracker\ExpenseTracker\ExpenseTracker.Data\obj\Debug\netstandard2.0\ExpenseTracker.Data.csproj.CoreCompileInputs.cache
