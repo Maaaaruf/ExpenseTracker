@@ -16,5 +16,24 @@ namespace ExpenseTracker.Framework.Contexts
             _migrationAssemblyName = migrationAssemblyName;
         }
 
+        protected override void OnConfiguring(DbContextOptionsBuilder builder)
+        {
+            if (!builder.IsConfigured)
+            {
+                builder.UseSqlServer(
+                    _connectionString, m=> m.MigrationsAssembly(_migrationAssemblyName));
+            }
+
+            base.OnConfiguring(builder);
+        }
+
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            base.OnModelCreating(builder);
+        }
+
+
+
+
     }
 }
