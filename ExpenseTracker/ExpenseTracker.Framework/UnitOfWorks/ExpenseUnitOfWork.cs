@@ -7,7 +7,7 @@ using System.Text;
 
 namespace ExpenseTracker.Framework.UnitOfWorks
 {
-    public class ExpenseUnitOfWork : UnitOfWork
+    public class ExpenseUnitOfWork : UnitOfWork, IExpenseUnitOfWork
     {
         public IPaymentMethodRepository PaymentMethodRepository { get; set; }
         public ExpenseUnitOfWork(DbContext dbContext,
