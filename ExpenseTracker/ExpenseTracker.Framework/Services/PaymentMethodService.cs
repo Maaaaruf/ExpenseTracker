@@ -32,7 +32,14 @@ namespace ExpenseTracker.Framework.Services
 
         public void Update(PaymentMethod paymentMethod)
         {
-            throw new NotImplementedException();
+            int count = _expenseUnitOfWork.PaymentMethodRepository.GetCount(x => x.Name == paymentMethod.Name);
+
+            if (count > 0)
+                throw new DuplicationException("Repeated item found", paymentMethod.Name);
+
+             var existing = _expenseUnitOfWork.PaymentMethodRepository.GetById(paymentMethod.Id);
+             existing.Name = paymentMethod.Name;
+            _expenseUnitOfWork.Save();
         }
 
         public void Remove(PaymentMethod paymentMethod)
