@@ -15,6 +15,7 @@ using Microsoft.Extensions.Hosting;
 using Autofac;
 using ExpenseTracker.Framework.Contexts;
 using ExpenseTracker.Framework.Modules;
+using Autofac.Extensions.DependencyInjection;
 
 namespace ExpenseTracker.Web
 {
@@ -36,7 +37,7 @@ namespace ExpenseTracker.Web
             var migrationAssemblyName = typeof(Startup).Assembly.FullName;
 
             builder.RegisterModule(new FrameworkModule(connectionString, migrationAssemblyName));
-            //builder.RegisterModule(new WebModule(connectionString, migrationAssemblyName));
+            builder.RegisterModule(new WebModule(connectionString, migrationAssemblyName));
         }
 
 
@@ -62,6 +63,7 @@ namespace ExpenseTracker.Web
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            AutofacContainer = app.ApplicationServices.GetAutofacRoot();
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
