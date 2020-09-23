@@ -1,5 +1,8 @@
 ﻿using Autofac;
 using ExpenseTracker.Framework.Contexts;
+using ExpenseTracker.Framework.Repositories;
+using ExpenseTracker.Framework.Services;
+using ExpenseTracker.Framework.UnitOfWorks;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -24,6 +27,14 @@ namespace ExpenseTracker.Framework.Modules
                 .WithParameter("migrationAssemblyName", _migrationAssemblyName)
                 .InstancePerLifetimeScope();
 
+            builder.RegisterType<PaymentMethodRepository>().As<IPaymentMethodRepository>()
+                .InstancePerLifetimeScope();
+
+            builder.RegisterType<ExpenseUnitOfWork>().As<IExpenseUnitOfWork>()
+               .InstancePerLifetimeScope();
+
+            builder.RegisterType<PaymentMethodService>().As<IPaymentMethodService>()
+               .InstancePerLifetimeScope();
         }
     }
 }
