@@ -51,5 +51,10 @@ namespace ExpenseTracker.Framework.Services
 
             return (result, 0, 0);
         }
+
+        public PaymentMethod GetById(int id)
+        {
+            return _expenseUnitOfWork.PaymentMethodRepository.GetById(id);
+        }
     }
 }

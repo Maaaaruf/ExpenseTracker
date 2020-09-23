@@ -12,5 +12,6 @@ namespace ExpenseTracker.Framework.Services
         void Remove(PaymentMethod paymentMethod);
         void GetAll();
         (IList<PaymentMethod> records, int total, int totalFiltered) GetPaymentMethods(int pageIndex, int pageSize, string searchText, string sortText);
+        PaymentMethod GetById(int id);
     }
 }
