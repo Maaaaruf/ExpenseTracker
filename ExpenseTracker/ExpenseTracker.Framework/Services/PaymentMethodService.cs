@@ -63,5 +63,10 @@ namespace ExpenseTracker.Framework.Services
         {
             return _expenseUnitOfWork.PaymentMethodRepository.GetById(id);
         }
+
+        public void Remove(int id)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
