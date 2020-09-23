@@ -61,5 +61,31 @@ namespace ExpenseTracker.Web.Areas.User.Controllers
             }
             return RedirectToAction("index");
         }
+
+
+        public IActionResult Edit(int id)
+        {
+            var model = Startup.AutofacContainer.Resolve<EditPaymentMethodModel>();
+            model.Load(id);
+            return View(model);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Edit([Bind(nameof(EditPaymentMethodModel.Name))] EditPaymentMethodModel model)
+        {
+            try
+            {
+                model.Edit();
+                _toaster.AddSuccessToastMessage($"{model.Name} Updated Successfully");
+                _logger.LogInformation($"{model.Name} Payment Method Updated Successfully");
+            }
+            catch (Exception e)
+            {
+                _toaster.AddErrorToastMessage($"{model.Name} Update Faild");
+                _logger.LogInformation($"Faild to Update {model.Name} Payment Method. Exception is: {e}");
+            }
+            return RedirectToAction("index");
+        }
     }
 }
