@@ -66,7 +66,13 @@ namespace ExpenseTracker.Framework.Services
 
         public void Remove(int id)
         {
-            throw new NotImplementedException();
+            int count = _expenseUnitOfWork.PaymentMethodRepository.GetCount(x => x.Id == id);
+
+            if (count > 0)
+            {
+                _expenseUnitOfWork.PaymentMethodRepository.Remove(id);
+                _expenseUnitOfWork.Save();
+            }
         }
     }
 }
