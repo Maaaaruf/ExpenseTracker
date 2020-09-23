@@ -56,11 +56,12 @@ namespace ExpenseTracker.Web
                 options.UseSqlServer(connectionString, b => b.MigrationsAssembly(migrationAssemblyName)));
             services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<ApplicationDbContext>();
-            services.AddControllersWithViews().AddNToastNotifyNoty(new NToastNotify.NotyOptions() { 
-                ProgressBar = true,
-                Timeout = 3000,
-                Theme = "mint"
-            });
+            services.AddControllersWithViews().AddNToastNotifyToastr();
+            //services.AddControllersWithViews().AddNToastNotifyNoty(new NToastNotify.NotyOptions() { 
+            //    ProgressBar = true,
+            //    Timeout = 1000,
+            //    Theme = "mint"
+            //});
             services.AddRazorPages();
         }
 
