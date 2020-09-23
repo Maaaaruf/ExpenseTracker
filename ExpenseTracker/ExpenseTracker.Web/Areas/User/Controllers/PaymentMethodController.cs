@@ -11,6 +11,7 @@ using Serilog.Core;
 
 namespace ExpenseTracker.Web.Areas.User.Controllers
 {
+    [Area("User")]
     public class PaymentMethodController : Controller
     {
         public readonly ILogger<PaymentMethodController> _logger;
@@ -22,7 +23,6 @@ namespace ExpenseTracker.Web.Areas.User.Controllers
             _toaster = toast;
         }
 
-        [Area("User")]
         public IActionResult Index()
         {
             var model = Startup.AutofacContainer.Resolve<PaymentMethodBaseModel>();
@@ -31,7 +31,7 @@ namespace ExpenseTracker.Web.Areas.User.Controllers
 
         public IActionResult Create()
         {
-            var model = Startup.AutofacContainer.Resolve<PaymentMethodBaseModel>();
+            var model = Startup.AutofacContainer.Resolve<CreatePaymentMethodModel>();
             return View(model);
         }
 
@@ -50,7 +50,7 @@ namespace ExpenseTracker.Web.Areas.User.Controllers
                 _toaster.AddErrorToastMessage($"{model.Name} Creation Faild");
                 _logger.LogInformation($"Faild to Create {model.Name} Payment Method. Exception is: {e}");
             }
-            return View(model);
+            return RedirectToAction("index");
         }
     }
 }
