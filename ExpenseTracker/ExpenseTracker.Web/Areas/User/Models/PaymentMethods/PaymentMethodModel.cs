@@ -26,7 +26,9 @@ namespace ExpenseTracker.Web.Areas.User.Models.PaymentMethods
                 data = (from record in data.records
                         select new string[]
                         {
-                                record.Name
+                                record.Name,
+                                record.Id.ToString()
+                                
                         }
                     ).ToArray()
 
