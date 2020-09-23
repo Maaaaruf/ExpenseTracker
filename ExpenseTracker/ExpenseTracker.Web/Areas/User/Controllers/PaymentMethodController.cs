@@ -37,7 +37,7 @@ namespace ExpenseTracker.Web.Areas.User.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Create(CreatePaymentMethodModel model)
+        public IActionResult Create([Bind(nameof(CreatePaymentMethodModel.Name))]CreatePaymentMethodModel model)
         {
             try
             {
