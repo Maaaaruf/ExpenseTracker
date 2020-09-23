@@ -16,6 +16,7 @@ namespace ExpenseTracker.Web.Areas.User.Models.PaymentMethods
         public void Edit()
         {
             var paymentMethod = new PaymentMethod();
+            paymentMethod.Id = Id;
             paymentMethod.Name = Name;
             _paymentMethodService.Update(paymentMethod);
         }

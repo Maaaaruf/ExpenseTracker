@@ -72,7 +72,7 @@ namespace ExpenseTracker.Web.Areas.User.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Edit([Bind(nameof(EditPaymentMethodModel.Name))] EditPaymentMethodModel model)
+        public IActionResult Edit([Bind(nameof(EditPaymentMethodModel.Id), nameof(EditPaymentMethodModel.Name))] EditPaymentMethodModel model)
         {
             try
             {
