@@ -56,7 +56,11 @@ namespace ExpenseTracker.Web
                 options.UseSqlServer(connectionString, b => b.MigrationsAssembly(migrationAssemblyName)));
             services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<ApplicationDbContext>();
-            services.AddControllersWithViews();
+            services.AddControllersWithViews().AddNToastNotifyNoty(new NToastNotify.NotyOptions() { 
+                ProgressBar = true,
+                Timeout = 3000,
+                Theme = "mint"
+            });
             services.AddRazorPages();
         }
 
@@ -64,6 +68,8 @@ namespace ExpenseTracker.Web
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             AutofacContainer = app.ApplicationServices.GetAutofacRoot();
+            app.UseNToastNotify();
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
