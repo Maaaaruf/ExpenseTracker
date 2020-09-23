@@ -9,7 +9,7 @@ namespace ExpenseTracker.Framework.Services
 {
     public class PaymentMethodService : IPaymentMethodService
     {
-        public IExpenseUnitOfWork _expenseUnitOfWork { get; set; }
+        public IExpenseUnitOfWork _expenseUnitOfWork;
 
         public PaymentMethodService(IExpenseUnitOfWork expenseUnitOfWork)
         {
