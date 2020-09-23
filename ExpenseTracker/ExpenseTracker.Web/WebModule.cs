@@ -22,6 +22,7 @@ namespace ExpenseTracker.Web
         {
             builder.RegisterType<CreatePaymentMethodModel>();
             builder.RegisterType<PaymentMethodBaseModel>();
+            builder.RegisterType<PaymentMethodModel>();
 
             base.Load(builder);
         }
