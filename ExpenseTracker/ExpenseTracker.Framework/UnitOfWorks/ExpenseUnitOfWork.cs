@@ -1,4 +1,5 @@
 ﻿using ExpenseTracker.Data;
+using ExpenseTracker.Framework.Repositories;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -8,8 +9,11 @@ namespace ExpenseTracker.Framework.UnitOfWorks
 {
     public class ExpenseUnitOfWork : UnitOfWork
     {
-        public ExpenseUnitOfWork(DbContext dbContext) : base(dbContext)
+        public IPaymentMethodRepository PaymentMethodRepository { get; set; }
+        public ExpenseUnitOfWork(DbContext dbContext,
+           IPaymentMethodRepository paymentMethodRepository ) : base(dbContext)
         {
+            PaymentMethodRepository = paymentMethodRepository;
         }
     }
 }
