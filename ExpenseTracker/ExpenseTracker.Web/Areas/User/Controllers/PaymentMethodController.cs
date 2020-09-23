@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Autofac;
+using ExpenseTracker.Web.Areas.User.Models;
 using ExpenseTracker.Web.Areas.User.Models.PaymentMethods;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -25,8 +26,16 @@ namespace ExpenseTracker.Web.Areas.User.Controllers
 
         public IActionResult Index()
         {
-            var model = Startup.AutofacContainer.Resolve<PaymentMethodBaseModel>();
+            var model = Startup.AutofacContainer.Resolve<PaymentMethodModel>();
             return View(model);
+        }
+
+        public IActionResult GetPayMethods()
+        {
+            var tableModel = new DataTablesAjaxRequestModel(Request);
+            var model = Startup.AutofacContainer.Resolve<PaymentMethodModel>();
+            var data = model.GetPaymentMethods(tableModel);
+            return Json(data);
         }
 
         public IActionResult Create()
