@@ -71,7 +71,7 @@
             </div>
             <div class="modal-body">
                 <p>Are you sure, you want to delete?</p>
-                <form id="deleteForm" action="/admin/books/deletebook" method="post">
+                <form id="deleteForm" action="/user/paymentmethod/delete" method="post">
                     @Html.AntiForgeryToken()
                     <input type="hidden" id="deleteId" value="" name="id" />
                 </form>
@@ -119,7 +119,7 @@
                 ]
             });
 
-            $('#example1').on('click', '.show-bs-modal', function (event) {
+            $('#paymentMethodTable').on('click', '.show-bs-modal', function (event) {
                 var id = $(this).data("id");
                 var modal = $("#modal-default");
                 modal.find('.modal-body p').text('Are you sure you want to delete this record?')

@@ -87,5 +87,26 @@ namespace ExpenseTracker.Web.Areas.User.Controllers
             }
             return RedirectToAction("index");
         }
+
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Delete(int id)
+        {
+            try
+            {
+                var model = new DeletePaymentMethodModel();
+                var item = model.delete(id);
+
+                _toaster.AddSuccessToastMessage($"{item} Deleted Successfully");
+                _logger.LogInformation($"{item} Payment Method Deleted Successfully");
+            }
+            catch (Exception e)
+            {
+                _toaster.AddErrorToastMessage($"Delete Faild");
+                _logger.LogInformation($"Faild to Delete Payment Method. Exception is: {e}");
+            }
+            return RedirectToAction("index");
+        }
     }
 }

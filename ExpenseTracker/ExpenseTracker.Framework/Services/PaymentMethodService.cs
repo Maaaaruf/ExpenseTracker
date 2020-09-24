@@ -44,7 +44,8 @@ namespace ExpenseTracker.Framework.Services
 
         public void Remove(PaymentMethod paymentMethod)
         {
-            throw new NotImplementedException();
+            _expenseUnitOfWork.PaymentMethodRepository.Remove(paymentMethod);
+            _expenseUnitOfWork.Save();
         }
 
         public void GetAll()
