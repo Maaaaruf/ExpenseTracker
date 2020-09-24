@@ -15,6 +15,7 @@ using Microsoft.Extensions.Hosting;
 using Autofac;
 using ExpenseTracker.Framework.Contexts;
 using ExpenseTracker.Framework.Modules;
+using Autofac.Extensions.DependencyInjection;
 
 namespace ExpenseTracker.Web
 {
@@ -36,7 +37,7 @@ namespace ExpenseTracker.Web
             var migrationAssemblyName = typeof(Startup).Assembly.FullName;
 
             builder.RegisterModule(new FrameworkModule(connectionString, migrationAssemblyName));
-            //builder.RegisterModule(new WebModule(connectionString, migrationAssemblyName));
+            builder.RegisterModule(new WebModule(connectionString, migrationAssemblyName));
         }
 
 
@@ -55,13 +56,21 @@ namespace ExpenseTracker.Web
                 options.UseSqlServer(connectionString, b => b.MigrationsAssembly(migrationAssemblyName)));
             services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<ApplicationDbContext>();
-            services.AddControllersWithViews();
+            services.AddControllersWithViews().AddNToastNotifyToastr();
+            //services.AddControllersWithViews().AddNToastNotifyNoty(new NToastNotify.NotyOptions() { 
+            //    ProgressBar = true,
+            //    Timeout = 1000,
+            //    Theme = "mint"
+            //});
             services.AddRazorPages();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            AutofacContainer = app.ApplicationServices.GetAutofacRoot();
+            app.UseNToastNotify();
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -84,8 +93,17 @@ namespace ExpenseTracker.Web
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
-                    name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    name: "areas",
+                    pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}");
+
+                endpoints.MapAreaControllerRoute(
+                name: "default",
+                areaName: "user",
+                pattern: "{controller=paymentmethod}/{action=Index}/{id?}");
+                //endpoints.MapControllerRoute(
+                //    name: "default",
+                //    pattern: "{controller=Home}/{action=Index}/{id?}");
+
                 endpoints.MapRazorPages();
             });
         }

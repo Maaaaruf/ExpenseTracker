@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using ExpenseTracker.Framework.Entities;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -16,5 +17,22 @@ namespace ExpenseTracker.Framework.Contexts
             _migrationAssemblyName = migrationAssemblyName;
         }
 
+        protected override void OnConfiguring(DbContextOptionsBuilder builder)
+        {
+            if (!builder.IsConfigured)
+            {
+                builder.UseSqlServer(
+                    _connectionString, m=> m.MigrationsAssembly(_migrationAssemblyName));
+            }
+
+            base.OnConfiguring(builder);
+        }
+
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            base.OnModelCreating(builder);
+        }
+
+        public DbSet<PaymentMethod> PaymentMethods { get; set; }
     }
 }
