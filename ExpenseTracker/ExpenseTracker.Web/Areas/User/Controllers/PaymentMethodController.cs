@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Autofac;
+using ExpenseTracker.Framework.Exceptions;
 using ExpenseTracker.Web.Areas.User.Models;
 using ExpenseTracker.Web.Areas.User.Models.PaymentMethods;
 using Microsoft.AspNetCore.Mvc;
@@ -50,6 +51,10 @@ namespace ExpenseTracker.Web.Areas.User.Controllers
         {
             try
             {
+                if (!ModelState.IsValid)
+                    throw new InvalidModelException("The Model Is Invaild.");
+
+
                 model.Create();
                 _toaster.AddSuccessToastMessage($"{model.Name} Created Successfully");
                 _logger.LogInformation($"{model.Name} Payment Method Created Successfully");
@@ -76,6 +81,9 @@ namespace ExpenseTracker.Web.Areas.User.Controllers
         {
             try
             {
+                if (!ModelState.IsValid)
+                    throw new InvalidModelException("The Model Is Invaild.");
+
                 model.Edit();
                 _toaster.AddSuccessToastMessage($"{model.Name} Updated Successfully");
                 _logger.LogInformation($"{model.Name} Payment Method Updated Successfully");
@@ -95,6 +103,9 @@ namespace ExpenseTracker.Web.Areas.User.Controllers
         {
             try
             {
+                if (!ModelState.IsValid)
+                    throw new InvalidModelException("The Model Is Invaild.");
+
                 var model = new DeletePaymentMethodModel();
                 var item = model.delete(id);
 
