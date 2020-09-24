@@ -48,16 +48,10 @@ namespace ExpenseTracker.Framework.Services
             _expenseUnitOfWork.Save();
         }
 
-        public void GetAll()
-        {
-            throw new NotImplementedException();
-        }
-
         public (IList<PaymentMethod> records, int total, int totalFiltered) GetPaymentMethods(int pageIndex, int pageSize, string searchText, string sortText)
         {
-            var result = _expenseUnitOfWork.PaymentMethodRepository.GetAll().ToList();
-
-            return (result, 0, 0);
+            var (data, total, totalFiltered) = _expenseUnitOfWork.PaymentMethodRepository.GetDynamic(x => x.Name.Contains(searchText), sortText, null, pageIndex, pageSize, true);
+            return (data, total, totalFiltered);
         }
 
         public PaymentMethod GetById(int id)
