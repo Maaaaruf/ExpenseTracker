@@ -24,8 +24,12 @@ namespace ExpenseTracker.Web.Areas.User.Models
                     {
                         new MenuItem
                         {
-                            Title = "Books",
-                            URL = ""
+                            Title = "Payment Methods",
+                            Childs =  new List<MenuChildItem>
+                            {
+                                new MenuChildItem{ Title = "List", Url = "/user/paymentmethod/"},
+                                new MenuChildItem{ Title = "Create", Url = "/user/paymentmethod/create"},
+                            }
                         }
                     }
                 }

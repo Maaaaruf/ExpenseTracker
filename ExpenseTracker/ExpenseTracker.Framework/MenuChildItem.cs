@@ -4,9 +4,9 @@ using System.Text;
 
 namespace ExpenseTracker.Framework
 {
-    public class MenuItem
+    public class MenuChildItem
     {
         public string Title { get; set; }
-        public IList<MenuChildItem> Childs { get; set; }
+        public string Url { get; set; }
     }
 }
