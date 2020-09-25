@@ -34,6 +34,9 @@ namespace ExpenseTracker.Framework.Services
 
         public void Update(PaymentMethod paymentMethod)
         {
+            if (paymentMethod == null)
+                throw new EntityNullException<PaymentMethod>();
+
             int count = _expenseUnitOfWork.PaymentMethodRepository.GetCount(x => x.Name == paymentMethod.Name);
 
             if (count > 0)
