@@ -9,6 +9,7 @@ using Shouldly;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
+using System.Linq.Expressions;
 using System.Text;
 using Xunit;
 
@@ -52,5 +53,29 @@ namespace ExpenseTracker.Framework.Tests.Services
             //Assert
 
         }
+
+        [Fact]
+        public void Create_IsDuplicateFound_ThrowsException()
+        {
+            //Arrange
+            PaymentMethod payment = new PaymentMethod { Name = "BKash"};
+            PaymentMethod existingPaymentMethod = new PaymentMethod { Name = "BKash" };
+
+            //Act
+            _expenseUnitOfWorkMock.Setup(x => x.PaymentMethodRepository)
+                .Returns(_paymentRepositoryMock.Object);
+
+            _paymentRepositoryMock.Setup(x => x.GetCount(
+                It.Is<Expression<Func<PaymentMethod, bool>>>(y => y.Compile()(existingPaymentMethod))))
+                .Returns(1).Verifiable();
+            Should.Throw<DuplicationException>(() =>
+            _paymentMethodService.Create(payment));
+
+            //Assert
+            _expenseUnitOfWorkMock.VerifyAll();
+            _paymentRepositoryMock.VerifyAll();
+        }
+
+
     }
 }
