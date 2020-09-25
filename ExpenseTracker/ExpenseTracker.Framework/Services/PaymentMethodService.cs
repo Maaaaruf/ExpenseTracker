@@ -19,15 +19,17 @@ namespace ExpenseTracker.Framework.Services
 
         public void Create(PaymentMethod paymentMethod)
         {
+            if (paymentMethod == null)
+                throw new EntityNullException<PaymentMethod>();
+
             int count = _expenseUnitOfWork.PaymentMethodRepository.GetCount(x=>x.Name == paymentMethod.Name);
 
             if (count > 0)
                 throw new DuplicationException("Repeated item found", paymentMethod.Name);
-            else
-            {
-                _expenseUnitOfWork.PaymentMethodRepository.Add(paymentMethod);
-                _expenseUnitOfWork.Save();
-            }
+
+            _expenseUnitOfWork.PaymentMethodRepository.Add(paymentMethod);
+            _expenseUnitOfWork.Save();
+
         }
 
         public void Update(PaymentMethod paymentMethod)
