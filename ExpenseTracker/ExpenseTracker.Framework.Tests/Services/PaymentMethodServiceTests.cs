@@ -76,6 +76,68 @@ namespace ExpenseTracker.Framework.Tests.Services
             _paymentRepositoryMock.VerifyAll();
         }
 
+        [Fact]
+        public void Create_NotNullUniquePaymentMethod_CreatePaymentMethod()
+        {
+            //Arrange
+            PaymentMethod payment = new PaymentMethod { Name = "BKash" };
+
+            _expenseUnitOfWorkMock.Setup(x => x.PaymentMethodRepository)
+                 .Returns(_paymentRepositoryMock.Object);
+
+            _paymentRepositoryMock.Setup(x => x.GetCount(
+                It.Is<Expression<Func<PaymentMethod, bool>>>(y => y.Compile()(payment))))
+                .Returns(0).Verifiable();
+
+            _paymentRepositoryMock.Setup(x => x.Add(It.Is<PaymentMethod>(y => y.Name == payment.Name))).Verifiable();
+            _expenseUnitOfWorkMock.Setup(x => x.Save()).Verifiable();
+
+
+            //Act
+            _paymentMethodService.Create(payment);
+
+            //Assert
+            _paymentRepositoryMock.VerifyAll();
+            _expenseUnitOfWorkMock.VerifyAll();
+        }
+
+
+        [Fact]
+        public void Update_IsPaymentMethodNull_ThrowsException()
+        {
+            //Arrange
+            PaymentMethod payment = null;
+
+            //Act
+            Should.Throw<EntityNullException<PaymentMethod>>(() =>
+                _paymentMethodService.Update(payment)
+            );
+
+            //Assert
+
+        }
+
+        [Fact]
+        public void Update_IsDuplicateFound_ThrowsException()
+        {
+            //Arrange
+            PaymentMethod payment = new PaymentMethod { Name = "BKash" };
+            PaymentMethod existingPaymentMethod = new PaymentMethod { Name = "BKash" };
+
+            //Act
+            _expenseUnitOfWorkMock.Setup(x => x.PaymentMethodRepository)
+                .Returns(_paymentRepositoryMock.Object);
+
+            _paymentRepositoryMock.Setup(x => x.GetCount(
+                It.Is<Expression<Func<PaymentMethod, bool>>>(y => y.Compile()(existingPaymentMethod))))
+                .Returns(1).Verifiable();
+            Should.Throw<DuplicationException>(() =>
+            _paymentMethodService.Update(payment));
+
+            //Assert
+            _expenseUnitOfWorkMock.VerifyAll();
+            _paymentRepositoryMock.VerifyAll();
+        }
 
     }
 }
