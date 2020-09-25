@@ -19,26 +19,31 @@ namespace ExpenseTracker.Framework.Services
 
         public void Create(PaymentMethod paymentMethod)
         {
+            if (paymentMethod == null)
+                throw new EntityNullException<PaymentMethod>();
+
             int count = _expenseUnitOfWork.PaymentMethodRepository.GetCount(x=>x.Name == paymentMethod.Name);
 
             if (count > 0)
                 throw new DuplicationException("Repeated item found", paymentMethod.Name);
-            else
-            {
-                _expenseUnitOfWork.PaymentMethodRepository.Add(paymentMethod);
-                _expenseUnitOfWork.Save();
-            }
+
+            _expenseUnitOfWork.PaymentMethodRepository.Add(paymentMethod);
+            _expenseUnitOfWork.Save();
+
         }
 
         public void Update(PaymentMethod paymentMethod)
         {
+            if (paymentMethod == null)
+                throw new EntityNullException<PaymentMethod>();
+
             int count = _expenseUnitOfWork.PaymentMethodRepository.GetCount(x => x.Name == paymentMethod.Name);
 
             if (count > 0)
                 throw new DuplicationException("Repeated item found", paymentMethod.Name);
 
-             var existing = _expenseUnitOfWork.PaymentMethodRepository.GetById(paymentMethod.Id);
-             existing.Name = paymentMethod.Name;
+            var existing = _expenseUnitOfWork.PaymentMethodRepository.GetById(paymentMethod.Id);
+            existing.Name = paymentMethod.Name;
             _expenseUnitOfWork.Save();
         }
 
@@ -69,5 +74,7 @@ namespace ExpenseTracker.Framework.Services
                 _expenseUnitOfWork.Save();
             }
         }
+
+        public void Dispose() => _expenseUnitOfWork?.Dispose();
     }
 }
