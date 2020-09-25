@@ -42,8 +42,8 @@ namespace ExpenseTracker.Framework.Services
             if (count > 0)
                 throw new DuplicationException("Repeated item found", paymentMethod.Name);
 
-             var existing = _expenseUnitOfWork.PaymentMethodRepository.GetById(paymentMethod.Id);
-             existing.Name = paymentMethod.Name;
+            var existing = _expenseUnitOfWork.PaymentMethodRepository.GetById(paymentMethod.Id);
+            existing.Name = paymentMethod.Name;
             _expenseUnitOfWork.Save();
         }
 
