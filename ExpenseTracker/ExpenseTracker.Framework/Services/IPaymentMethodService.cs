@@ -9,7 +9,8 @@ namespace ExpenseTracker.Framework.Services
     public interface IPaymentMethodService : 
         ICreateable<PaymentMethod>, 
         IUpdateable<PaymentMethod>, 
-        IRemoveable<PaymentMethod>
+        IRemoveable<PaymentMethod>,
+        IDisposable
     {
         
         (IList<PaymentMethod> records, int total, int totalFiltered) GetPaymentMethods(int pageIndex, int pageSize, string searchText, string sortText);

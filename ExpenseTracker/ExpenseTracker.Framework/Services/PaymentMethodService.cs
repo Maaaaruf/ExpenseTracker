@@ -71,5 +71,7 @@ namespace ExpenseTracker.Framework.Services
                 _expenseUnitOfWork.Save();
             }
         }
+
+        public void Dispose() => _expenseUnitOfWork?.Dispose();
     }
 }
